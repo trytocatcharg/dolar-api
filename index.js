@@ -62,6 +62,26 @@ app.get('/euros', function (req, res, next) {
     });
 })
 
+app.get('/commodities', function (req, res, next) {
+fetch("https://backend-ifa-production.up.railway.app/api/commodities", {
+  "headers": {
+    "accept": "application/json, text/plain, */*",
+    "sec-ch-ua": "\"Chromium\";v=\"116\", \"Not)A;Brand\";v=\"24\", \"Google Chrome\";v=\"116\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "Referer": "https://www.finanzasargy.com/",
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
+  "body": null,
+  "method": "GET"
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    res.json({data});
+  });
+})
+
 
 app.listen(8081, function () {
   console.log('CORS-enabled web server listening on port 8081')
